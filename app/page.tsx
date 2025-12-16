@@ -22,38 +22,45 @@ export default function Home() {
   useGSAP(() => {
     if (!containerRef.current) return;
 
-    const contents = gsap.utils.toArray<HTMLElement>(
-      containerRef.current.querySelectorAll(".content")
+    const track = containerRef.current.querySelector(
+      ".horizontal-track"
+    ) as HTMLElement;
+
+    const slides = gsap.utils.toArray<HTMLElement>(
+      track.querySelectorAll(".content")
     );
 
-    gsap.to(contents, {
-      xPercent: -100 * (contents.length - 1),
+    gsap.to(track, {
+      xPercent: -100 * (slides.length - 1),
       ease: "none",
       scrollTrigger: {
         trigger: containerRef.current,
         pin: true,
         scrub: 1,
         start: "top top",
-        end: () => `+=${containerRef.current!.offsetWidth}`,
+        end: () => `+=${window.innerWidth * (slides.length - 1)}`,
       },
     });
   }, []);
+
   return (
     <ReactLenis root>
-      <div>
+      <div className="overflow-x-hidden">
         <Hero />
         <section ref={containerRef} className="horizontal-scroll">
-          <div className="content">
-            <Portfolio />
-          </div>
-          <div className="content">
-            <About />
-          </div>
-          <div className="content">
-            <Techstack />
-          </div>
-          <div className="content">
-            <Projects />
+          <div className="horizontal-track">
+            <div className="content">
+              <Portfolio />
+            </div>
+            <div className="content">
+              <About />
+            </div>
+            <div className="content">
+              <Techstack />
+            </div>
+            <div className="content">
+              <Projects />
+            </div>
           </div>
         </section>
 

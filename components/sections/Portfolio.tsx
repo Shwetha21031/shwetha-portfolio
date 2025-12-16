@@ -6,7 +6,7 @@ import TextReveal from "../ui/TextReveal";
 
 const Portfolio = () => {
   return (
-    <div className="h-screen w-full grid place-items-center  relative bg-black">
+    <div className="h-screen w-[100vw] grid place-items-center  relative bg-black">
       <div className="flex flex-col p-10 relative">
         {/* Name */}
         <TextReveal delay={0.9}>

@@ -131,12 +131,20 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    /* overflow-x: hidden; */
   }
 }
 
 .horizontal-scroll {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.horizontal-track {
   display: flex;
-  width: max-content;
+  height: 100%;
 }
 
 .content {
@@ -144,6 +152,7 @@ body {
   height: 100vh;
   flex-shrink: 0;
 }
+
 
 .light-rays-container {
   width: 100%;
