@@ -1,6 +1,6 @@
 "use client";
 const About = () => {
-  return <div className="h-screen w-[100vw] bg-white text-black">About</div>;
+  return <div className="h-screen w-[100vw]">About</div>;
 };
 
 export default About;

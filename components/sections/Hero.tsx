@@ -67,7 +67,7 @@ const Hero = () => {
         </div>
 
         {/* Huge text */}
-        <TextReveal delay={0.5}>
+        <TextReveal delay={2.5}>
           <h1 className="font-source-sans max-w-5xl text-black text-4xl md:text-7xl font-bold leading-tight">
             I see, I think, I build
             <br />
@@ -77,13 +77,13 @@ const Hero = () => {
       </div>
 
       {/* clouds */}
-      <TextReveal delay={0.5}>
+      <TextReveal delay={2.5}>
         <div className="absolute top-0 -left-50 z-20 ">
           <Image src="/cloud.png" alt="Location" width={600} height={50} />
         </div>
       </TextReveal>
       {/* clouds */}
-      <TextReveal delay={0.3}>
+      <TextReveal delay={2.3}>
         <div className="absolute top-10 left-50 z-20 ">
           <Image
             src="/cloud-flipped.png"
@@ -94,13 +94,13 @@ const Hero = () => {
         </div>
       </TextReveal>
 
-      <TextReveal delay={0.4}>
+      <TextReveal delay={2.4}>
         <div className="absolute bottom-30 -right-30 z-20 ">
           <Image src="/cloud.png" alt="Location" width={500} height={50} />
         </div>
       </TextReveal>
 
-      <TextReveal delay={0.5}>
+      <TextReveal delay={2.5}>
         <div className="absolute bottom-20 right-60 z-20 ">
           <Image
             src="/cloud-flipped.png"
@@ -110,7 +110,7 @@ const Hero = () => {
           />
         </div>
       </TextReveal>
-      <TextReveal delay={0.2}>
+      <TextReveal delay={2.2}>
         <div className="absolute top-20 right-20 z-20 ">
           <Image src="/cloud.png" alt="Location" width={200} height={50} />
         </div>

@@ -1,29 +1,30 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLenis } from "lenis/react";
 
 export default function ScrollProgress() {
   const [progress, setProgress] = useState(0);
+  const lenis = useLenis();
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
+    if (!lenis) return;
 
-      const scrolled = (scrollTop / docHeight) * 100;
-      setProgress(scrolled);
+    const onScroll = ({ scroll, limit }: { scroll: number; limit: number }) => {
+      setProgress((scroll / limit) * 100);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    lenis.on("scroll", onScroll);
+
+    return () => {
+      lenis.off("scroll", onScroll);
+    };
+  }, [lenis]);
 
   return (
     <div className="fixed top-0 left-0 z-50 h-1 w-full bg-transparent">
       <div
-        className="h-full transition-[width] duration-75 ease"
+        className="h-full will-change-[width]"
         style={{
           width: `${progress}%`,
           backgroundColor: "var(--color-scroll)",
