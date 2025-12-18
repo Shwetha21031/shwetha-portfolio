@@ -57,7 +57,7 @@ const Portfolio = () => {
           </div>
         </TextReveal>
 
-        <TextReveal delay={0.7}>
+        <TextReveal delay={0.5}>
           <p className="text-[#FF0B55] text-2xl mt-0 ml-2 text-right">
             Software{" "}
             <span>

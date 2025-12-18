@@ -55,8 +55,8 @@ export default function Loader({ onComplete }: LoaderProps) {
       }}
     >
       <div className="flex flex-col items-center gap-6">
-        <span className="text-white text-6xl font-semibold tabular-nums">
-          {percent}%
+        <span className="text-white text-3xl font-semibold tabular-nums">
+          Loading {percent}%
         </span>
 
         <div className="w-64 h-1 bg-white/30 overflow-hidden">

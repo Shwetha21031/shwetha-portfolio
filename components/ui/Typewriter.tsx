@@ -31,24 +31,37 @@ const Typewriter: React.FC<TypewriterProps> = ({
     const currentWord = words[wordIndex];
     let timeout: NodeJS.Timeout;
 
+    // Typing
     if (!isDeleting && charIndex < currentWord.length) {
       timeout = setTimeout(() => {
         setText(currentWord.slice(0, charIndex + 1));
-        setCharIndex(charIndex + 1);
+        setCharIndex((prev) => prev + 1);
       }, typingSpeed);
-    } else if (isDeleting && charIndex > 0) {
+      return () => clearTimeout(timeout);
+    }
+
+    // Pause before deleting
+    if (!isDeleting && charIndex === currentWord.length) {
+      timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, pauseTime);
+      return () => clearTimeout(timeout);
+    }
+
+    // Deleting
+    if (isDeleting && charIndex > 0) {
       timeout = setTimeout(() => {
         setText(currentWord.slice(0, charIndex - 1));
-        setCharIndex(charIndex - 1);
+        setCharIndex((prev) => prev - 1);
       }, deletingSpeed);
-    } else if (!isDeleting && charIndex === currentWord.length) {
-      timeout = setTimeout(() => setIsDeleting(true), pauseTime);
-    } else if (isDeleting && charIndex === 0) {
+      return () => clearTimeout(timeout);
+    }
+
+    // Move to next word (loop)
+    if (isDeleting && charIndex === 0) {
       setIsDeleting(false);
       setWordIndex((prev) => (prev + 1) % words.length);
     }
-
-    return () => clearTimeout(timeout);
   }, [
     charIndex,
     isDeleting,
@@ -62,9 +75,7 @@ const Typewriter: React.FC<TypewriterProps> = ({
   return (
     <span
       className={`inline-flex items-center text-left ${className}`}
-      style={{
-        minWidth: `${longestWordLength}ch`,
-      }}
+      style={{ minWidth: `${longestWordLength}ch` }}
     >
       {text}
       <span className="ml-1 w-[2px] h-[1em] bg-current animate-pulse" />
