@@ -165,24 +165,28 @@ const VariableProximity = forwardRef<HTMLSpanElement, VariableProximityProps>((p
   return (
     <span
       ref={ref}
-      className={`${className} variable-proximity`}
+      className={`${className} variable-proximity font-source-sans`}
       onClick={onClick}
-      style={{ display: 'inline', ...style }}
+      style={{ display: "inline", ...style }}
       {...restProps}
     >
       {words.map((word, wordIndex) => (
-        <span key={wordIndex} style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
-          {word.split('').map(letter => {
+        <span
+          key={wordIndex}
+          style={{ display: "inline-block", whiteSpace: "nowrap" }}
+        >
+          {word.split("").map((letter) => {
             const currentLetterIndex = letterIndex++;
             return (
               <motion.span
                 key={currentLetterIndex}
-                ref={el => {
+                ref={(el) => {
                   letterRefs.current[currentLetterIndex] = el;
                 }}
                 style={{
-                  display: 'inline-block',
-                  fontVariationSettings: interpolatedSettingsRef.current[currentLetterIndex]
+                  display: "inline-block",
+                  fontVariationSettings:
+                    interpolatedSettingsRef.current[currentLetterIndex],
                 }}
                 aria-hidden="true"
               >
@@ -190,7 +194,9 @@ const VariableProximity = forwardRef<HTMLSpanElement, VariableProximityProps>((p
               </motion.span>
             );
           })}
-          {wordIndex < words.length - 1 && <span style={{ display: 'inline-block' }}>&nbsp;</span>}
+          {wordIndex < words.length - 1 && (
+            <span style={{ display: "inline-block" }}>&nbsp;</span>
+          )}
         </span>
       ))}
       <span className="sr-only">{label}</span>

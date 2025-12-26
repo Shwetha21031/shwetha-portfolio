@@ -7,6 +7,10 @@
   font-family: var(--font-source-sans), system-ui, sans-serif;
 }
 
+.font-sulphur-point {
+  font-family: var(--font-sulphur-point);
+}
+
 :root {
   --color-scroll: #FF0B55;
   --radius: 0.625rem;
@@ -206,4 +210,21 @@ body {
     rgba(0, 0, 0, 1) 35%,
     rgba(0, 0, 0, 0) 100%
   );
+}
+
+@keyframes scroll-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-x {
+  animation: scroll-x 30s linear infinite;
+}
+
+.animate-scroll-x:hover {
+  animation-play-state: paused;
 }
