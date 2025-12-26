@@ -87,7 +87,7 @@ const Hero = () => {
         <div className="absolute top-10 left-50 z-20 ">
           <Image
             src="/cloud-flipped.png"
-            alt="Location"
+            alt="cloud"
             width={200}
             height={50}
           />

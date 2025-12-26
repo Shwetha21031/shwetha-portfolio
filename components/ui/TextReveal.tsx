@@ -78,7 +78,7 @@ const TextReveal: React.FC<TextRevealProps> = ({
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top 75%",
-            once: true,
+            once: false,
           },
         });
       } else {
