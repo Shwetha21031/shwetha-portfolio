@@ -11,6 +11,7 @@ import WorkTogether from "@/components/sections/WorkTogether";
 import Footer from "@/components/sections/Footer";
 import Loader from "@/components/layouts/Loader";
 
+
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";

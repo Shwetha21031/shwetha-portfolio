@@ -1,12 +1,9 @@
 "use client";
 import Image from "next/image";
-import LightRays from "../ui/LightRays";
 
 const Techstack = () => {
   return (
     <div className="relative h-screen w-screen bg-black overflow-hidden">
-      
-
       {/* Left fade */}
       <div
         className="absolute inset-y-0 left-0 w-32 
@@ -23,13 +20,24 @@ const Techstack = () => {
 
       {/* Content */}
       <div className="relative z-0 h-full w-full grid place-items-center">
-        <Image
-          src="/skills.png"
-          alt="skills"
-          width={1000}
-          height={80}
-          priority
-        />
+        <div>
+          <span className="absolute top-1/4 right-1/6">
+            <Image
+              src="/skills matrix.png"
+              alt="skills"
+              width={150}
+              height={80}
+              priority
+            />
+          </span>
+          <Image
+            src="/skills.png"
+            alt="skills"
+            width={1000}
+            height={80}
+            priority
+          />
+        </div>
       </div>
     </div>
   );

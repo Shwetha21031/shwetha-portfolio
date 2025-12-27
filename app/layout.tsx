@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Source_Sans_3, Sulphur_Point } from "next/font/google";
 import "./globals.css";
 import ScrollProgress from "@/components/ui/ScrollProgress";
+import { Roboto_Flex } from "next/font/google";
+
+const robotoFlex = Roboto_Flex({
+  subsets: ["latin"],
+  variable: "--robo-flex-point",
+  display: "swap",
+});
 
 export const sulphur = Sulphur_Point({
   subsets: ["latin"],
@@ -40,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${sulphur.variable} ${sourceSans.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${sulphur.variable} ${sourceSans.variable} ${robotoFlex.variable} antialiased`}
       >
         <ScrollProgress />
         {children}

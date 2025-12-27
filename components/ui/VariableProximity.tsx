@@ -1,9 +1,7 @@
-import { forwardRef, useMemo, useRef, useEffect, MutableRefObject, RefObject, HTMLAttributes } from 'react';
+import { forwardRef, useMemo, useRef, useEffect, MutableRefObject, CSSProperties, HTMLAttributes } from 'react';
 import { motion } from 'motion/react';
 
-type Callback = () => void;
-
-function useAnimationFrame(callback: Callback) {
+function useAnimationFrame(callback: () => void) {
   useEffect(() => {
     let frameId: number;
     const loop = () => {
@@ -15,12 +13,12 @@ function useAnimationFrame(callback: Callback) {
   }, [callback]);
 }
 
-function useMousePositionRef(containerRef: RefObject<HTMLElement | null>) {
+function useMousePositionRef(containerRef: MutableRefObject<HTMLElement | null>) {
   const positionRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const updatePosition = (x: number, y: number) => {
-      if (containerRef.current) {
+      if (containerRef?.current) {
         const rect = containerRef.current.getBoundingClientRect();
         positionRef.current = { x: x - rect.left, y: y - rect.top };
       } else {
@@ -28,37 +26,33 @@ function useMousePositionRef(containerRef: RefObject<HTMLElement | null>) {
       }
     };
 
-    const handleMouseMove = (ev: MouseEvent) =>
-      updatePosition(ev.clientX, ev.clientY);
-
+    const handleMouseMove = (ev: MouseEvent) => updatePosition(ev.clientX, ev.clientY);
     const handleTouchMove = (ev: TouchEvent) => {
       const touch = ev.touches[0];
       updatePosition(touch.clientX, touch.clientY);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("touchmove", handleTouchMove);
-
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchmove', handleTouchMove);
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleTouchMove);
     };
   }, [containerRef]);
 
   return positionRef;
 }
 
-
 interface VariableProximityProps extends HTMLAttributes<HTMLSpanElement> {
   label: string;
   fromFontVariationSettings: string;
   toFontVariationSettings: string;
-  containerRef: React.RefObject<HTMLElement | null>;
+  containerRef: MutableRefObject<HTMLElement | null>;
   radius?: number;
-  falloff?: "linear" | "exponential" | "gaussian";
+  falloff?: 'linear' | 'exponential' | 'gaussian';
   className?: string;
   onClick?: () => void;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 }
 
 const VariableProximity = forwardRef<HTMLSpanElement, VariableProximityProps>((props, ref) => {
@@ -165,28 +159,28 @@ const VariableProximity = forwardRef<HTMLSpanElement, VariableProximityProps>((p
   return (
     <span
       ref={ref}
-      className={`${className} variable-proximity font-source-sans`}
       onClick={onClick}
-      style={{ display: "inline", ...style }}
+      style={{
+        display: 'inline',
+        fontFamily: '"Roboto Flex", sans-serif',
+        ...style
+      }}
+      className={className}
       {...restProps}
     >
       {words.map((word, wordIndex) => (
-        <span
-          key={wordIndex}
-          style={{ display: "inline-block", whiteSpace: "nowrap" }}
-        >
-          {word.split("").map((letter) => {
+        <span key={wordIndex} className="inline-block whitespace-nowrap">
+          {word.split('').map(letter => {
             const currentLetterIndex = letterIndex++;
             return (
               <motion.span
                 key={currentLetterIndex}
-                ref={(el) => {
+                ref={el => {
                   letterRefs.current[currentLetterIndex] = el;
                 }}
                 style={{
-                  display: "inline-block",
-                  fontVariationSettings:
-                    interpolatedSettingsRef.current[currentLetterIndex],
+                  display: 'inline-block',
+                  fontVariationSettings: interpolatedSettingsRef.current[currentLetterIndex]
                 }}
                 aria-hidden="true"
               >
@@ -194,9 +188,7 @@ const VariableProximity = forwardRef<HTMLSpanElement, VariableProximityProps>((p
               </motion.span>
             );
           })}
-          {wordIndex < words.length - 1 && (
-            <span style={{ display: "inline-block" }}>&nbsp;</span>
-          )}
+          {wordIndex < words.length - 1 && <span className="inline-block">&nbsp;</span>}
         </span>
       ))}
       <span className="sr-only">{label}</span>

@@ -24,8 +24,8 @@ const WorkTogether = () => {
           <p className="text-black text-2xl font-source-sans pb-8">
             My resume is one click away
           </p>
-          {/* <a href="/resume.pdf" download> */}
-          <a href="javascript:void(0);">
+          <a href="/Shwetha_Resume.pdf" download>
+          {/* <a href="javascript:void(0);"> */}
             <div className="relative inline-block">
               {/* STATIC SHADOW (does NOT move) */}
               <div
@@ -45,6 +45,7 @@ const WorkTogether = () => {
       px-18 py-8
       text-2xl font-medium text-black
       bg-[#FF0B55]
+      hover:bg-[#ff326f]
       transition-transform duration-150
       active:translate-x-[10px]
       active:translate-y-[10px]

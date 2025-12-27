@@ -1,65 +1,104 @@
 import React from 'react'
 import Image from 'next/image';
 import TextReveal from '../ui/TextReveal';
+
 const Footer = () => {
   const quotes = [
-    "Design is how it works.",
-    "Clarity beats cleverness.",
-    "Motion should feel earned.",
-    "Build slowly. Ship deliberately.",
-    "Interfaces are conversations.",
+    "The important thing is not to stop questioning. — Albert Einstein",
+    "You don’t have to be great to start, but you have to start to be great. — Zig Ziglar",
+    "Creativity is intelligence having fun. — Albert Einstein",
+    "Tell me and I forget. Teach me and I remember. Involve me and I learn. — Benjamin Franklin",
+    "Progress, not perfection. — (often attributed, modern classic)",
+    "You can’t improve what you don’t build. — Anonymous",
   ];
 
   const socialLinks = [
     {
       name: "instagram",
-      href: "https://instagram.com/yourusername",
+      href: "https://www.instagram.com/__.shwetha._____/",
+      text: "DMs open",
+      type: "external",
     },
     {
       name: "linkedin",
-      href: "https://linkedin.com/in/yourusername",
+      href: "https://www.linkedin.com/in/shwetha21031/",
+      text: "Let’s connect",
+      type: "external",
     },
     {
       name: "github",
-      href: "https://github.com/yourusername",
+      href: "https://github.com/Shwetha21031",
+      text: "View my work",
+      type: "external",
     },
     {
       name: "mail",
-      href: "https://github.com/yourusername",
+      href: "mailto:shwetha.a.dev@gmail.com",
+      text: "Say hello: shwetha.a.dev@gmail.com",
+      type: "contact",
     },
     {
-      name: "phone number",
-      href: "https://github.com/yourusername",
+      name: "phone",
+      href: "tel:+919380732361",
+      text: "Call me maybe: 9380732361",
+      type: "contact",
     },
   ];
 
-  const SocialLinks = () => {
-    return (
-      <div className="flex gap-8 text-xl">
-        {socialLinks.map((social) => (
-          <a
-            key={social.name}
-            href={social.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center cursor-pointer text-xl tracking-wide"
-          >
-            <span className="transition-transform duration-300 ease-out group-hover:-translate-x-2">
-              [
-            </span>
 
-            <span className="mx-2 hover:font-black cursor-pointer">
-              {social.name}
-            </span>
+const SocialLinks = () => {
+  return (
+    <div className="flex gap-8 text-xl">
+      {socialLinks.map((social) => {
+        const isExternal = social.type === "external";
 
-            <span className="transition-transform duration-300 ease-out group-hover:translate-x-2">
-              ]
+        return (
+          <div key={social.name} className="relative group">
+            <a
+              href={social.href}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noopener noreferrer" : undefined}
+              className="inline-flex items-center cursor-pointer tracking-wide"
+            >
+              <span>[</span>
+              <span className="mx-2 font-light group-hover:font-black transition-all duration-300">
+                {social.name}
+              </span>
+              <span>]</span>
+            </a>
+
+            {/* Tooltip */}
+            <span
+              className="
+                pointer-events-none
+                absolute
+                left-1/2
+                -bottom-8
+                -translate-x-1/2
+                whitespace-nowrap
+                rounded-full
+                bg-[#FFDEDE]
+                px-3
+                py-1
+                text-xs
+                text-black
+                opacity-0
+                scale-95
+                transition-all
+                duration-300
+                ease-out
+                group-hover:opacity-100
+                group-hover:scale-100
+              "
+            >
+              {social.text}
             </span>
-          </a>
-        ))}
-      </div>
-    );
-  };
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 
   return (
@@ -118,13 +157,14 @@ const Footer = () => {
         <Image
           width={60}
           height={10}
-          src={"/scroll-to-top.png"}
-          alt="acroll to top"
-          className="transition-transform
-    duration-300
-    delay-100
-    ease-in-out
-    hover:-translate-y-2 cursor-pointer"
+          src="/scroll-to-top.png"
+          alt="scroll to top"
+          className="transition-transform duration-300 delay-100 ease-in-out hover:-translate-y-2 cursor-pointer"
+          onClick={() => {
+            document
+              .getElementById("hero")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
         />
       </div>
       <div className="w-full flex flex-col items-center">

@@ -1,18 +1,53 @@
 "use client";
 
 import Image from "next/image";
-import dynamic from "next/dynamic";
-// const Greet = dynamic(() => import("../ui/Greet"), { ssr: false });
 import Typewriter from "../ui/Typewriter";
 import TextReveal from "../ui/TextReveal";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
+  const cloudLeftBig = useRef<HTMLDivElement | null>(null);
+  const cloudRightSmall = useRef<HTMLDivElement | null>(null);
+  const cloudRightBig = useRef<HTMLDivElement | null>(null);
+  const cloudLeftSmall = useRef<HTMLDivElement | null>(null);
+  const cloudTopRight = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const clouds = [
+      { ref: cloudLeftBig, x: -1800 },
+      { ref: cloudRightSmall, x: -1600 },
+      { ref: cloudRightBig, x: 1800 },
+      { ref: cloudLeftSmall, x: 1600 },
+      { ref: cloudTopRight, x: 1500 },
+    ];
+
+    clouds.forEach(({ ref, x }) => {
+      if (!ref.current) return;
+
+      gsap.to(ref.current, {
+        x,
+        ease: "none",
+        scrollTrigger: {
+          trigger: document.body,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    });
+  }, []);
+
   return (
     <section
       className="relative h-screen w-full bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{
         backgroundImage: "url('/clouds-bg-hero-section.JPG')",
       }}
+      id="hero"
     >
       {/* Bottom gradient */}
       <div
@@ -26,11 +61,20 @@ const Hero = () => {
       {/* Hero content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center gap-8 text-center">
         {/* Profile wrapper (ANCHOR) */}
+
         <div className="relative w-[340px] h-[340px]">
           {/* Location */}
-          <div className="absolute top-28 -left-28 z-20 ">
-            <Image src="/location.png" alt="Location" width={150} height={50} />
-          </div>
+
+          <TextReveal delay={2.5}>
+            <div className="absolute top-28 -left-28 z-20 ">
+              <Image
+                src="/location.png"
+                alt="Location"
+                width={150}
+                height={50}
+              />
+            </div>
+          </TextReveal>
 
           {/* Top-right: Hello bubble */}
           <div className="absolute top-0 -right-4 translate-x-1/2 z-20 w-[150px] h-[80px]">
@@ -40,7 +84,7 @@ const Hero = () => {
               fill
               className="object-contain"
             />
-            <div className="absolute translate-y-5 translate-x-14">
+            <div className="absolute translate-y-5 translate-x-14 text-black">
               <Typewriter
                 words={[
                   "Hello!",
@@ -54,16 +98,21 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Profile image placeholder */}
-          <div className="h-full w-full rounded-full border-[5px] border-white overflow-hidden bg-neutral-800 flex items-center justify-center">
-            {/* Empty image tag — add src later */}
-            {/* <Image src="" alt="Profile" fill className="object-cover" /> */}
+          <div className="relative h-full w-full rounded-full border-[5px] border-white overflow-hidden bg-neutral-800 flex items-center justify-center">
+            <Image
+              src="/profile_pic.JPG"
+              alt="Profile"
+              fill
+              className="object-cover"
+            />
           </div>
 
           {/* It's me */}
-          <div className="absolute bottom-4 -right-16 -translate-y-1/2 z-20">
-            <Image src="/its_me.png" alt="Its me" width={120} height={50} />
-          </div>
+          <TextReveal delay={2.5}>
+            <div className="absolute bottom-4 -right-16 -translate-y-1/2 z-20">
+              <Image src="/its_me.png" alt="Its me" width={120} height={50} />
+            </div>
+          </TextReveal>
         </div>
 
         {/* Huge text */}
@@ -77,44 +126,25 @@ const Hero = () => {
       </div>
 
       {/* clouds */}
-      <TextReveal delay={2.5}>
-        <div className="absolute top-0 -left-50 z-20 ">
-          <Image src="/cloud.png" alt="Location" width={600} height={50} />
-        </div>
-      </TextReveal>
-      {/* clouds */}
-      <TextReveal delay={2.3}>
-        <div className="absolute top-10 left-50 z-20 ">
-          <Image
-            src="/cloud-flipped.png"
-            alt="cloud"
-            width={200}
-            height={50}
-          />
-        </div>
-      </TextReveal>
+      <div ref={cloudLeftBig} className="absolute top-0 -left-20 z-20">
+        <Image src="/cloud.png" alt="cloud" width={600} height={50} />
+      </div>
 
-      <TextReveal delay={2.4}>
-        <div className="absolute bottom-30 -right-30 z-20 ">
-          <Image src="/cloud.png" alt="Location" width={500} height={50} />
-        </div>
-      </TextReveal>
+      <div ref={cloudRightSmall} className="absolute top-0 left-60 z-20">
+        <Image src="/cloud-flipped.png" alt="cloud" width={200} height={50} />
+      </div>
 
-      <TextReveal delay={2.5}>
-        <div className="absolute bottom-20 right-60 z-20 ">
-          <Image
-            src="/cloud-flipped.png"
-            alt="Location"
-            width={200}
-            height={50}
-          />
-        </div>
-      </TextReveal>
-      <TextReveal delay={2.2}>
-        <div className="absolute top-20 right-20 z-20 ">
-          <Image src="/cloud.png" alt="Location" width={200} height={50} />
-        </div>
-      </TextReveal>
+      <div ref={cloudRightBig} className="absolute bottom-30 -right-30 z-20">
+        <Image src="/cloud.png" alt="cloud" width={500} height={50} />
+      </div>
+
+      <div ref={cloudLeftSmall} className="absolute bottom-20 right-60 z-20">
+        <Image src="/cloud-flipped.png" alt="cloud" width={200} height={50} />
+      </div>
+
+      <div ref={cloudTopRight} className="absolute top-10 right-50 z-20">
+        <Image src="/cloud.png" alt="cloud" width={200} height={50} />
+      </div>
     </section>
   );
 };
