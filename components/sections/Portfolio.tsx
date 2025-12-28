@@ -30,7 +30,7 @@ const Portfolio = () => {
       <div className="flex flex-col p-10 relative">
         {/* Name */}
         <TextReveal delay={0.3}>
-          <p className="text-[#FF0B55] text-4xl  ml-2">Shwetha&apos;a</p>
+          <p className="text-[#FF0B55] text-4xl  ml-2">Shwetha&apos;s</p>
         </TextReveal>
 
         <TextReveal delay={0.4}>
