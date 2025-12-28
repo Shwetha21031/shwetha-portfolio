@@ -14,7 +14,7 @@ const DesktopNotice = () => {
         <TextReveal delay={2.6}>
           <p className="mt-5 text-center">
             For the full visual and interactive experience, please switch to
-            <b> laptop or desktop computer</b>.
+            <b> laptop or desktop</b>.
           </p>
         </TextReveal>
         <span className="absolute -top-30 left-0 -rotate-40">
