@@ -133,7 +133,7 @@ const Hero = () => {
       </div>
 
       <div ref={cloudRightSmall} className="absolute top-0 left-60 z-20">
-        <Image src="/cloud-flipped.png" alt="cloud" width={200} height={50} />
+        <Image src="/cloud-flipped.png" alt="cloud-flipped" width={200} height={50} />
       </div>
 
       <div ref={cloudRightBig} className="absolute bottom-30 -right-20 z-20">
@@ -141,7 +141,7 @@ const Hero = () => {
       </div>
 
       <div ref={cloudLeftSmall} className="absolute bottom-20 right-10 z-20">
-        <Image src="/cloud-flipped.png" alt="cloud" width={200} height={50} />
+        <Image src="/cloud-flipped.png" alt="cloud-flipped" width={200} height={50} />
       </div>
 
       <div ref={cloudTopRight} className="absolute top-10 right-50 z-20">
