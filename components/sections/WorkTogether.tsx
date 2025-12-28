@@ -90,8 +90,8 @@ const WorkTogether = () => {
       </div>
       <div className="absolute top-30 left-30 z-40">
         <Image
-          src="/cloud-flipped.png"
-          alt="Location"
+          src="/cloudreverse.png"
+          alt="cloudreverse.png"
           width={200}
           height={50}
         />
@@ -102,8 +102,8 @@ const WorkTogether = () => {
 
       <div className="absolute bottom-20 right-40 z-40 ">
         <Image
-          src="/cloud-flipped.png"
-          alt="Location"
+          src="/cloudreverse.png"
+          alt="cloud-reverse"
           width={200}
           height={50}
         />
