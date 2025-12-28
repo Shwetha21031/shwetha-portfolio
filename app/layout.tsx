@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Source_Sans_3, Sulphur_Point } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import { Roboto_Flex } from "next/font/google";
 
@@ -49,6 +50,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${sulphur.variable} ${sourceSans.variable} ${robotoFlex.variable} antialiased`}
       >
+        <Analytics />
         <ScrollProgress />
         {children}
       </body>
