@@ -134,7 +134,7 @@ const Hero = () => {
 
       <div ref={cloudRightSmall} className="absolute top-0 left-60 z-20">
         <Image
-          src="/cloudreverse.png.png"
+          src="/cloudreverse.png"
           alt="cloudreverse.png"
           width={200}
           height={50}
