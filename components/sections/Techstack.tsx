@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-
+import LightRays from "../ui/LightRays";
 const Techstack = () => {
   return (
     <div className="relative h-screen w-screen bg-black overflow-hidden">
@@ -10,7 +10,6 @@ const Techstack = () => {
                       bg-gradient-to-r from-black to-transparent 
                       z-10 pointer-events-none"
       />
-
       {/* Right fade */}
       <div
         className="absolute inset-y-0 right-0 w-32 
@@ -18,6 +17,21 @@ const Techstack = () => {
                       z-10 pointer-events-none"
       />
 
+      {/* light rays */}
+      <div className="absolute top-0 w-full h-screen">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#FFDEDE"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          className="custom-rays "
+        />
+      </div>
       {/* Content */}
       <div className="relative z-0 h-full w-full grid place-items-center">
         <div>

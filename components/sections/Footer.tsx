@@ -1,8 +1,9 @@
-import React from 'react'
-import Image from 'next/image';
-import TextReveal from '../ui/TextReveal';
-
+import React from "react";
+import Image from "next/image";
+import VariableProximity from "../ui/VariableProximity";
+import { useRef } from "react";
 const Footer = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const quotes = [
     "The important thing is not to stop questioning. — Albert Einstein",
     "You don’t have to be great to start, but you have to start to be great. — Zig Ziglar",
@@ -45,31 +46,30 @@ const Footer = () => {
     },
   ];
 
+  const SocialLinks = () => {
+    return (
+      <div className="flex gap-8 text-xl">
+        {socialLinks.map((social) => {
+          const isExternal = social.type === "external";
 
-const SocialLinks = () => {
-  return (
-    <div className="flex gap-8 text-xl">
-      {socialLinks.map((social) => {
-        const isExternal = social.type === "external";
+          return (
+            <div key={social.name} className="relative group">
+              <a
+                href={social.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
+                className="inline-flex items-center cursor-pointer tracking-wide"
+              >
+                <span>[</span>
+                <span className="mx-2 font-light group-hover:font-black transition-all duration-300">
+                  {social.name}
+                </span>
+                <span>]</span>
+              </a>
 
-        return (
-          <div key={social.name} className="relative group">
-            <a
-              href={social.href}
-              target={isExternal ? "_blank" : undefined}
-              rel={isExternal ? "noopener noreferrer" : undefined}
-              className="inline-flex items-center cursor-pointer tracking-wide"
-            >
-              <span>[</span>
-              <span className="mx-2 font-light group-hover:font-black transition-all duration-300">
-                {social.name}
-              </span>
-              <span>]</span>
-            </a>
-
-            {/* Tooltip */}
-            <span
-              className="
+              {/* Tooltip */}
+              <span
+                className="
                 pointer-events-none
                 absolute
                 left-1/2
@@ -90,26 +90,35 @@ const SocialLinks = () => {
                 group-hover:opacity-100
                 group-hover:scale-100
               "
-            >
-              {social.text}
-            </span>
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
+              >
+                {social.text}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
 
   return (
     <div className="font-sulphur-point h-screen w-full bg-black text-[#FFDEDE] flex flex-col justify-between">
       <div className="p-10">
         <div className="flex w-full">
-          <TextReveal delay={0.5}>
-            <div className="w-[30%] text-6xl font-bold">
-              Scroll Journey Complete
-            </div>
-          </TextReveal>
+          <div
+            ref={containerRef}
+            style={{ position: "relative" }}
+            className="w-[30%] text-6xl font-bold"
+          >
+            <VariableProximity
+              label={"Scroll Journey Complete"}
+              className={"variable-proximity-demo"}
+              fromFontVariationSettings="'wght' 400, 'opsz' 9"
+              toFontVariationSettings="'wght' 1000, 'opsz' 40"
+              containerRef={containerRef}
+              radius={100}
+              falloff="linear"
+            />
+          </div>
 
           {/* infinite scroll */}
           <div className="relative w-[70%] overflow-hidden text-2xl cursor-pointer">
@@ -141,11 +150,22 @@ const SocialLinks = () => {
           </div>
         </div>
 
-        <TextReveal delay={0.5}>
-          <div className="my-2 text-2xl font-light">
-            Thanks for scrolling — let’s connect.
-          </div>
-        </TextReveal>
+        {/* thanks for scrolling */}
+        <div
+          ref={containerRef}
+          style={{ position: "relative" }}
+          className="my-2 text-2xl font-light"
+        >
+          <VariableProximity
+            label={"Thanks for scrolling — let’s connect."}
+            className={"variable-proximity-demo"}
+            fromFontVariationSettings="'wght' 400, 'opsz' 9"
+            toFontVariationSettings="'wght' 1000, 'opsz' 40"
+            containerRef={containerRef}
+            radius={100}
+            falloff="linear"
+          />
+        </div>
 
         {/* social media */}
 
@@ -169,21 +189,41 @@ const SocialLinks = () => {
       </div>
       <div className="w-full flex flex-col items-center">
         {/* FINAL DESTINATION */}
-        <TextReveal delay={0.5}>
-          <div className="inline-block text-[13vw] leading-[0.95] border-b border-[#FFDEDE] pb-1">
-            Final Destination
-          </div>
-        </TextReveal>
+        <div
+          ref={containerRef}
+          style={{ position: "relative" }}
+          className=" inline-block text-[13vw] leading-[0.95] border-b border-[#FFDEDE] pb-1"
+        >
+          <VariableProximity
+            label={"Final Destination"}
+            className={"variable-proximity-demo"}
+            fromFontVariationSettings="'wght' 400, 'opsz' 9"
+            toFontVariationSettings="'wght' 1000, 'opsz' 40"
+            containerRef={containerRef}
+            radius={100}
+            falloff="linear"
+          />
+        </div>
 
         {/* COPYRIGHT */}
-        <TextReveal delay={0.4}>
-          <p className="m-2.5 text-[18px]">
-            © 2025 shwetha — thanks for hanging out.
-          </p>
-        </TextReveal>
+        <div
+          ref={containerRef}
+          style={{ position: "relative" }}
+          className="m-2.5 text-[18px]"
+        >
+          <VariableProximity
+            label={"© 2025 shwetha — thanks for hanging out."}
+            className={"variable-proximity-demo"}
+            fromFontVariationSettings="'wght' 400, 'opsz' 9"
+            toFontVariationSettings="'wght' 1000, 'opsz' 40"
+            containerRef={containerRef}
+            radius={100}
+            falloff="linear"
+          />
+        </div>
       </div>
     </div>
   );
-}
+};
 
-export default Footer
+export default Footer;

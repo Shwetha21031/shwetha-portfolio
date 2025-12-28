@@ -117,12 +117,14 @@ const Hero = () => {
 
         {/* Huge text */}
         <TextReveal delay={2.5}>
-          <h1 className="font-source-sans max-w-5xl text-black text-4xl md:text-7xl font-bold leading-tight">
-            I see, I think, I build
-            <br />
+          <h1 className="font-source-sans max-w-5xl text-black text-4xl md:text-7xl font-bold leading-tight -mt-6">
+            I see, I think, I build <br />
             then I overthink.
           </h1>
         </TextReveal>
+        {/* <p className="text-black font-medium -mt-10 font-source-sans">
+          - Still learning. Always building. Progress over perfection.
+        </p> */}
       </div>
 
       {/* clouds */}
@@ -134,11 +136,11 @@ const Hero = () => {
         <Image src="/cloud-flipped.png" alt="cloud" width={200} height={50} />
       </div>
 
-      <div ref={cloudRightBig} className="absolute bottom-30 -right-30 z-20">
+      <div ref={cloudRightBig} className="absolute bottom-30 -right-20 z-20">
         <Image src="/cloud.png" alt="cloud" width={500} height={50} />
       </div>
 
-      <div ref={cloudLeftSmall} className="absolute bottom-20 right-60 z-20">
+      <div ref={cloudLeftSmall} className="absolute bottom-20 right-10 z-20">
         <Image src="/cloud-flipped.png" alt="cloud" width={200} height={50} />
       </div>
 

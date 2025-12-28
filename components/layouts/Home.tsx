@@ -10,7 +10,8 @@ import Techstack from "@/components/sections/Techstack";
 import WorkTogether from "@/components/sections/WorkTogether";
 import Footer from "@/components/sections/Footer";
 import Loader from "@/components/layouts/Loader";
-
+import DesktopNotice from "./DesktopNotice";
+import MusicPlayer from "./MusicPlayer";
 
 import { useRef } from "react";
 import gsap from "gsap";
@@ -48,11 +49,14 @@ const [isLoaded, setIsLoaded] = useState(false);
   }, []);
 
     return (
-      <>
+      <div className="relative overflow-x-hidden">
         {!isLoaded && <Loader onComplete={() => setIsLoaded(true)} />}
 
         <ReactLenis root>
-          <div className="overflow-x-hidden">
+          <div className="block lg:hidden">
+            <DesktopNotice />
+          </div>
+          <div className="overflow-x-hidden hidden lg:block">
             <Hero />
             <section ref={containerRef} className="horizontal-scroll">
               <div className="horizontal-track">
@@ -74,7 +78,10 @@ const [isLoaded, setIsLoaded] = useState(false);
             <WorkTogether />
             <Footer />
           </div>
+
+          {/* music player */}
+            <MusicPlayer />
         </ReactLenis>
-      </>
+      </div>
     );
 }
