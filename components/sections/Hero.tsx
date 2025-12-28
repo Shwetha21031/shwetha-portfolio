@@ -122,37 +122,16 @@ const Hero = () => {
             then I overthink.
           </h1>
         </TextReveal>
-        {/* <p className="text-black font-medium -mt-10 font-source-sans">
-          - Still learning. Always building. Progress over perfection.
-        </p> */}
       </div>
 
       {/* clouds */}
       <div ref={cloudLeftBig} className="absolute top-0 -left-20 z-20">
         <Image src="/cloud.png" alt="cloud" width={600} height={50} />
       </div>
-{/* 
-      <div ref={cloudRightSmall} className="absolute top-0 left-60 z-20">
-        <Image
-          src="/cloudreverse.png"
-          alt="cloudreverse.png"
-          width={200}
-          height={50}
-        />
-      </div> */}
 
       <div ref={cloudRightBig} className="absolute bottom-30 -right-20 z-20">
         <Image src="/cloud.png" alt="cloud" width={500} height={50} />
       </div>
-      {/* 
-      <div ref={cloudLeftSmall} className="absolute bottom-20 right-10 z-20">
-        <Image
-          src="/cloudreverse.png"
-          alt="cloudreverse.png"
-          width={200}
-          height={50}
-        />
-      </div> */}
 
       <div ref={cloudTopRight} className="absolute top-10 right-50 z-20">
         <Image src="/cloud.png" alt="cloud" width={200} height={50} />
