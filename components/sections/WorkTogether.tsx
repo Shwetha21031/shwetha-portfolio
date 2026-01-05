@@ -23,7 +23,7 @@ const WorkTogether = () => {
           <div
             ref={containerRef}
             style={{ position: "relative" }}
-            className="robo-flex-point text-black text-[clamp(1.5rem,6vw,8vw)] font-black pb-4 px-14"
+            className="font-sulphur-point text-black text-[clamp(1.5rem,4vw,6vw)] font-black pb-4 px-14"
           >
             <VariableProximity
               label={"WANNA WORK TOGETHER?"}
@@ -39,7 +39,7 @@ const WorkTogether = () => {
           <div
             ref={containerRef}
             style={{ position: "relative" }}
-            className="robo-flex-point text-black text-[clamp(1rem,3vw,6vw)] pb-8"
+            className="font-sulphur-point font-light text-black text-[clamp(1rem,3vw,6vw)] pb-8"
           >
             <VariableProximity
               label={"My resume is one click away."}

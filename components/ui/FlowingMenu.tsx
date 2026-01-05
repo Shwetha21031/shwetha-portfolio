@@ -95,7 +95,7 @@ const repeatedMarqueeContent = React.useMemo(() => {
   return (
     <div className="menu__item" ref={itemRef}>
       <a
-        className="menu__item-link"
+        className="menu__item-link "
         href={link}
         target="_blank"
         rel="noopener noreferrer"
