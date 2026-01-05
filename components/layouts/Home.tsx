@@ -53,10 +53,11 @@ const [isLoaded, setIsLoaded] = useState(false);
         {!isLoaded && <Loader onComplete={() => setIsLoaded(true)} />}
 
         <ReactLenis root>
-          <div className="block lg:hidden">
+          {/* <div className="block lg:hidden">
             <DesktopNotice />
-          </div>
-          <div className="overflow-x-hidden hidden lg:block">
+          </div> */}
+          {/* <div className="overflow-x-hidden hidden lg:block"> */}
+          <div className="overflow-x-hidden">
             <Hero />
             <section ref={containerRef} className="horizontal-scroll">
               <div className="horizontal-track">

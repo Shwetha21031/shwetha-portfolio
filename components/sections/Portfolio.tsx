@@ -30,49 +30,53 @@ const Portfolio = () => {
       <div className="flex flex-col p-10 relative">
         {/* Name */}
         <TextReveal delay={0.3}>
-          <p className="text-[#FF0B55] text-4xl  ml-2">Shwetha&apos;s</p>
+          <p className="text-[#FF0B55] text-[clamp(2rem,4vw,3rem)]  ml-2">
+            Shwetha&apos;s
+          </p>
         </TextReveal>
 
         <TextReveal delay={0.4}>
           {/* Portfolio */}
-          <div className="flex flex-col font-bold text-[12vw] leading-none">
+          <div className="flex flex-col font-bold text-[clamp(5rem,12vw,40rem)] leading-none">
             {/* First line */}
             <div className="flex items-center relative">
               <span className="text-white font-black">P</span>
               <span
-                className=" flex items-center justify-center mx-2 "
                 ref={circleRef}
+                className="flex items-center justify-center mx-2
+             w-[clamp(80px,10vw,150px)]
+             aspect-square"
               >
                 <Image
                   src="/circle-img.png"
                   alt="circle-img"
-                  width={150}
-                  height={150}
+                  fill
                   className="rounded-full object-cover"
                 />
               </span>
 
               <span className="text-white font-black">RT</span>
-              <span className="absolute right-15 top-15">
+              <span className="absolute right-15 top-5 w-[clamp(80px,10vw,150px)]  aspect-square max-md:hidden">
                 <Image
                   src="/stamp.png"
                   alt="stamp"
-                  width={120}
-                  height={120}
-                  className="object-cover -rotate-8"
+                  fill
+                  className=" rounded object-cover -rotate-8"
                 />
               </span>
             </div>
 
             {/* Second line */}
             <div className="ml-10 p-2 flex">
-              <span className=" flex items-center justify-center">
+              <span
+                className="flex items-center justify-center mx-1
+             w-[clamp(50px,10vw,150px)] relative"
+              >
                 <Image
                   src="/figma.png"
                   alt="figma"
-                  width={100}
-                  height={100}
-                  className="object-cover  -rotate-10"
+                  fill
+                  className="object-contain  -rotate-10"
                 />
               </span>
               <span className="text-white ml-2 font-black">OLIO</span>
@@ -80,7 +84,7 @@ const Portfolio = () => {
           </div>
         </TextReveal>
 
-        <p className="text-[#FF0B55] h-[50px] text-4xl ml-2 text-right flex items-center justify-end gap-2">
+        <p className="text-[#FF0B55] h-[50px] text-[clamp(2rem,4vw,3rem)] ml-2 text-right flex items-center justify-end gap-2 max-md:mb-[20vh]">
           Software
           <span className="inline-block w-[10ch] text-left">
             <Typewriter words={["Developer", "Designer", "Engineer"]} />

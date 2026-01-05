@@ -48,7 +48,7 @@ const Footer = () => {
 
   const SocialLinks = () => {
     return (
-      <div className="flex gap-8 text-xl">
+      <div className="flex gap-8 text-xl max-md:gap-4 flex-wrap">
         {socialLinks.map((social) => {
           const isExternal = social.type === "external";
 
@@ -101,13 +101,13 @@ const Footer = () => {
   };
 
   return (
-    <div className="font-sulphur-point h-screen w-full bg-black text-[#FFDEDE] flex flex-col justify-between">
+    <div className="font-sulphur-point h-screen max-md:h-[95vh] w-full bg-black text-[#FFDEDE] flex flex-col justify-between">
       <div className="p-10">
-        <div className="flex w-full">
+        <div className="flex w-full max-md:flex-col">
           <div
             ref={containerRef}
             style={{ position: "relative" }}
-            className="w-[30%] text-6xl font-bold"
+            className="w-[30%] max-md:w-full text-[clamp(1.75rem,3vw,3.75rem)] font-black"
           >
             <VariableProximity
               label={"Scroll Journey Complete"}
@@ -121,28 +121,19 @@ const Footer = () => {
           </div>
 
           {/* infinite scroll */}
-          <div className="relative w-[70%] overflow-hidden text-2xl cursor-pointer">
-            {/* LEFT GRADIENT */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black to-transparent z-10" />
-
-            {/* RIGHT GRADIENT */}
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black to-transparent z-10" />
-
-            <div className="flex w-max animate-scroll-x gap-12">
+          <div className="relative  w-[70%] max-md:w-full overflow-hidden max-md:text-[18px] text-2xl cursor-pointer">
+            {/* gradient */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-linear-to-r from-black to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-linear-to-l from-black to-transparent z-10" />
+            <div className="flex w-max animate-scroll-x justify-start gap-12">
               {quotes.map((quote, i) => (
-                <div
-                  key={`q1-${i}`}
-                  className="whitespace-nowrap text-xl font-light"
-                >
+                <div key={`q1-${i}`} className="whitespace-nowrap font-light">
                   “{quote}”
                 </div>
               ))}
 
               {quotes.map((quote, i) => (
-                <div
-                  key={`q2-${i}`}
-                  className="whitespace-nowrap text-xl font-light"
-                >
+                <div key={`q2-${i}`} className="whitespace-nowrap font-light">
                   “{quote}”
                 </div>
               ))}
@@ -154,7 +145,7 @@ const Footer = () => {
         <div
           ref={containerRef}
           style={{ position: "relative" }}
-          className="my-2 text-2xl font-light"
+          className="my-2 text-[clamp(1rem, 3vw, 3.5rem)] font-light"
         >
           <VariableProximity
             label={"Thanks for scrolling — let’s connect."}
@@ -173,26 +164,30 @@ const Footer = () => {
           <SocialLinks />
         </div>
       </div>
+      {/* scroll to top */}
       <div className="flex justify-end mr-20">
-        <Image
-          width={60}
-          height={10}
-          src="/scroll-to-top.png"
-          alt="scroll to top"
-          className="transition-transform duration-300 delay-100 ease-in-out hover:-translate-y-2 cursor-pointer"
-          onClick={() => {
-            document
-              .getElementById("hero")
-              ?.scrollIntoView({ behavior: "smooth" });
-          }}
-        />
+        <div className="flex justify-center items-center flex-col">
+          <Image
+            width={60}
+            height={10}
+            src="/scroll-to-top.png"
+            alt="scroll to top"
+            className="transition-transform duration-300 delay-100 ease-in-out hover:-translate-y-2 cursor-pointer"
+            onClick={() => {
+              document
+                .getElementById("hero")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+          />
+          <p className="opacity-[50%] mt-5">Scroll to top</p>
+        </div>
       </div>
       <div className="w-full flex flex-col items-center">
         {/* FINAL DESTINATION */}
         <div
           ref={containerRef}
           style={{ position: "relative" }}
-          className=" inline-block text-[13vw] leading-[0.95] border-b border-[#FFDEDE] pb-1"
+          className=" inline-block text-[13vw] leading-[0.95] border-b border-[#FFDEDE] pb-1 max-sm:mr-15 max-sm:ml-10"
         >
           <VariableProximity
             label={"Final Destination"}
@@ -209,7 +204,7 @@ const Footer = () => {
         <div
           ref={containerRef}
           style={{ position: "relative" }}
-          className="m-2.5 text-[18px]"
+          className="m-2.5 text-[18px] max-sm:text-[16px]"
         >
           <VariableProximity
             label={"© 2025 shwetha — thanks for hanging out."}

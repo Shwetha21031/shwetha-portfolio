@@ -18,12 +18,12 @@ const WorkTogether = () => {
       <div className="pointer-events-none absolute bottom-0 left-0 h-40 w-full bg-gradient-to-t from-black to-transparent z-10" />
 
       {/* Glass card */}
-      <div className="h-[60%] w-[60%] rounded-md backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 grid place-items-center text-center z-30">
+      <div className="h-[60%] w-[60%] min-w-[400px] rounded-md backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 grid place-items-center text-center z-30">
         <div>
           <div
             ref={containerRef}
             style={{ position: "relative" }}
-            className="robo-flex-point text-black text-7xl font-black pb-4 px-14"
+            className="robo-flex-point text-black text-[clamp(1.5rem,6vw,8vw)] font-black pb-4 px-14"
           >
             <VariableProximity
               label={"WANNA WORK TOGETHER?"}
@@ -39,7 +39,7 @@ const WorkTogether = () => {
           <div
             ref={containerRef}
             style={{ position: "relative" }}
-            className="robo-flex-point text-black text-2xl pb-8"
+            className="robo-flex-point text-black text-[clamp(1rem,3vw,6vw)] pb-8"
           >
             <VariableProximity
               label={"My resume is one click away."}
@@ -68,6 +68,8 @@ const WorkTogether = () => {
                 className="
                 relative z-10
                 px-18 py-8
+                max-md:px-10
+                max-md:py-6
                 text-2xl font-medium text-black
                 bg-[#FF0B55]
                 hover:bg-[#ff326f]
@@ -88,7 +90,7 @@ const WorkTogether = () => {
       <div className="absolute top-40 -left-10 z-20 ">
         <Image src="/cloud.png" alt="Location" width={600} height={50} />
       </div>
-      <div className="absolute top-30 left-30 z-40">
+      <div className="absolute top-30 left-30 z-40 max-md:hidden">
         <Image
           src="/cloudreverse.png"
           alt="cloudreverse.png"
@@ -96,11 +98,11 @@ const WorkTogether = () => {
           height={50}
         />
       </div>
-      <div className="absolute bottom-30 -right-30 z-40 ">
+      <div className="absolute bottom-30 -right-30 z-40 max-md:hidden">
         <Image src="/cloud.png" alt="Location" width={500} height={50} />
       </div>
 
-      <div className="absolute bottom-20 right-40 z-40 ">
+      <div className="absolute bottom-20 right-40 z-40 max-md:hidden">
         <Image
           src="/cloudreverse.png"
           alt="cloud-reverse"

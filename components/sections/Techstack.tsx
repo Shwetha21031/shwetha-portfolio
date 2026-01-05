@@ -18,7 +18,7 @@ const Techstack = () => {
       />
 
       {/* light rays */}
-      <div className="absolute top-0 w-full h-screen">
+      <div className="absolute top-0 w-full h-screen max-md:hidden">
         <LightRays
           raysOrigin="top-center"
           raysColor="#FFDEDE"

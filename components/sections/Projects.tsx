@@ -15,7 +15,7 @@ const demoItems = [
   },
   {
     link: "https://google-pixel-watch-2-shwetha.vercel.app/",
-    text: "Google pixel watch 2",
+    text: "Google-pixel watch 2",
     image: "/google-pixel.png",
   },
   {
@@ -37,7 +37,7 @@ const Projects = () => {
         </p>
       </div>
 
-      <div style={{ height: "600px", position: "relative" }}>
+      <div style={{ height: "80vh", position: "relative" }}>
         <FlowingMenu items={demoItems} />
       </div>
     </div>

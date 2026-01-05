@@ -49,12 +49,22 @@
 
 html,
 body {
-  min-height: 100%;
-  overflow-y: auto;
+  /* min-height: 100%; */
+  overflow-x: hidden;
+  /* overflow-y: auto; */
   font-family: font-source-sans;
   background-color: #000;
   color: #fff;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge legacy */
+  margin: 0;
 }
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

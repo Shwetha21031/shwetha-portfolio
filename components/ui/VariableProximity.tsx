@@ -1,3 +1,4 @@
+'use client'
 import { forwardRef, useMemo, useRef, useEffect, MutableRefObject, CSSProperties, HTMLAttributes } from 'react';
 import { motion } from 'motion/react';
 

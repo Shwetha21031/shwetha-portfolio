@@ -8,7 +8,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 const About = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const floatingCircleRef = useRef<HTMLSpanElement | null>(null);
@@ -28,12 +27,15 @@ const About = () => {
     });
   }, []);
 
-
   return (
     <div className="w-screen h-full grid place-items-center gap-0 font-sulphur-point">
-      <div className="relative grid place-items-center text-center gap-6 text-3xl font-light w-[65%]">
+      <div
+        className="relative grid place-items-center text-center gap-6 text-[clamp(12px,3.5vw,2rem)]
+ font-light w-[65%]"
+      >
         <span
-          className=" flex items-center justify-center mx-2 absolute -top-20 -left-40 "
+          className=" flex items-center justify-center mx-2 absolute -top-[10vh] -left-[12vw] w-[clamp(90px,15vw,180px)]
+    pointer-events-none"
           ref={floatingCircleRef}
         >
           <Image
@@ -48,10 +50,10 @@ const About = () => {
         <div
           ref={containerRef}
           style={{ position: "relative" }}
-          className="text-5xl font-black pb-4 text-[#FFDEDE]"
+          className=" font-black pb-4 text-[#FFDEDE]"
         >
           <VariableProximity
-            label={"Some context before you judge my code"}
+            label={"A little context before you dive in"}
             className={"variable-proximity-demo"}
             fromFontVariationSettings="'wght' 400, 'opsz' 9"
             toFontVariationSettings="'wght' 1000, 'opsz' 40"
@@ -100,13 +102,22 @@ const About = () => {
             falloff="linear"
           />
         </div>
-        <span className=" flex items-center justify-center mx-2 absolute -bottom-20 -right-40 rotate-30">
+        <span
+          className="
+    absolute
+    -bottom-[10vh]
+    -right-[8vw]
+    rotate-[30deg]
+    w-[clamp(90px,15vw,180px)]
+    pointer-events-none
+  "
+        >
           <Image
             src="/stamp-1.png"
             alt="stamp-1"
             width={180}
             height={180}
-            className=" object-cover"
+            className="w-full h-auto object-contain"
           />
         </span>
       </div>
@@ -115,5 +126,3 @@ const About = () => {
 };
 
 export default About;
-
-
