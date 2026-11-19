@@ -6,7 +6,7 @@ Welcome to my personal portfolio — a space where I showcase my work, experimen
 This site isn’t just about projects; it’s about how I think, design, and build experiences on the web.
 
 🔗 **Live Site:**  
-https://shwetha-portfolio-acylfge5n-shwetha21031s-projects.vercel.app/
+https://shwetha-portfolio-virid.vercel.app/
 
 ---
 
