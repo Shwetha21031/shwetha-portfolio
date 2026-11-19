@@ -207,7 +207,7 @@ const Footer = () => {
           className="m-2.5 text-[18px] max-sm:text-[16px]"
         >
           <VariableProximity
-            label={"© 2025 shwetha — thanks for hanging out."}
+            label={"© 2026 shwetha — thanks for hanging out."}
             className={"variable-proximity-demo"}
             fromFontVariationSettings="'wght' 400, 'opsz' 9"
             toFontVariationSettings="'wght' 1000, 'opsz' 40"

@@ -87,7 +87,7 @@ const Portfolio = () => {
         <p className="text-[#FF0B55] h-[50px] text-[clamp(2rem,4vw,3rem)] ml-2 text-right flex items-center justify-end gap-2 max-md:mb-[20vh]">
           Software
           <span className="inline-block w-[10ch] text-left">
-            <Typewriter words={["Developer", "Designer", "Engineer"]} />
+            <Typewriter words={["Developer", "Engineer"]} />
           </span>
         </p>
       </div>

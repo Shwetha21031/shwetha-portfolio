@@ -66,7 +66,7 @@ const About = () => {
         <div ref={containerRef} style={{ position: "relative" }}>
           <VariableProximity
             label={
-              "Over 2+ years as a software engineer at Estuate, breaking things to understand them, rebuilding them cleaner, and trimming anything that slows the system down."
+              "Over 3+ years as a software engineer at Estuate, breaking things to understand them, rebuilding them cleaner, and trimming anything that slows the system down."
             }
             className={"variable-proximity-demo"}
             fromFontVariationSettings="'wght' 400, 'opsz' 9"

@@ -51,7 +51,7 @@ const WorkTogether = () => {
               falloff="linear"
             />
           </div>
-          <a href="/resume/Shwetha_Resume.pdf" download>
+          <a href="/resume/Shwetha_A_SDE_2.pdf" download>
             <div className="relative inline-block">
               <div
                 className="
